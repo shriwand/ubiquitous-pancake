@@ -9,11 +9,11 @@ Use android emulator because of availability & simplicity in terms of OS recover
 
 Use Android 14.0 ("UpsideDownCake") provided by Google.
 
-[Image version](images/avd-image.png)
+![Image version](images/avd-image.png)
 
-[AVD setup](images/avd-setup.png)
+![AVD setup](images/avd-setup.png)
 
-[AVD in Device Manager](images/avd-in-devicemanager.png)
+![AVD in Device Manager](images/avd-in-devicemanager.png)
 
 ## Rooting the emulator
 Use [this project](https://gitlab.com/newbit/rootAVD) for getting root access for the emulator.
@@ -23,13 +23,15 @@ Steps:
 1. Enable Developer Options & USB debugging.
 2. Get *rootAVD*: `git clone https://gitlab.com/newbit/rootAVD && cd rootAVD`
 3. Install *Magisk*: 
-``sh
+```sh
 export PATH=$PATH:~/Android/Sdk/platform-tools/
 ./rootAVD.sh system-images/android-34/google_apis_playstore/x86_64/ramdisk.img
-``
-4. Cold Boot the emulator [](images/cold-boot.png).
-5. Open & install *Magisk* [](images/open-magisk.png)
-6. `adb shell su` and allow superuser request in the emulator. [](images/superuser-request.png)
+```
+4. Cold Boot the emulator ![](images/cold-boot.png).
+5. Open & install *Magisk* ![](images/open-magisk.png)
+6. `adb shell su` and allow superuser request in the emulator. ![](images/superuser-request.png)
+
+In case of issues see [the instruction](https://samsclass.info/128/proj/M142.htm).
 
 ## WhatsApp installation.
 Install WhatsApp from Google Play.
