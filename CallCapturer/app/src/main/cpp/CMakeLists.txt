@@ -21,7 +21,7 @@ project("callcapture")
 # is preferred for the same purpose.
 #
 
-add_library(tinyalsa SHARED
+add_library(tinyalsa
         tinyalsa/mixer.c
         tinyalsa/mixer_hw.c
         tinyalsa/mixer_plugin.c
@@ -47,8 +47,14 @@ target_link_libraries(tinyalsa
 # used in the AndroidManifest.xml file.
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
+        tinycap-lib.cpp
+        tinymix-lib.cpp
         native-lib.cpp
 )
+
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
 
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
@@ -58,3 +64,21 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         tinyalsa
         android
         log)
+
+add_executable(tinymix
+    tinyalsa/tinymix.c
+)
+
+target_link_libraries(tinymix
+    tinyalsa
+)
+
+add_executable(tinycap
+        tinyalsa/tinycap.c
+)
+
+target_link_libraries(tinycap
+        tinyalsa
+)
+
+install(TARGETS tinymix tinycap)

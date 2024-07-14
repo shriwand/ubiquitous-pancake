@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
         startService(Intent(this, CallRecordingService::class.java))
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        stopService(Intent(this, CallRecordingService::class.java))
+    }
+
     /**
      * A native method that is implemented by the 'callcapture' native library,
      * which is packaged with this application.
